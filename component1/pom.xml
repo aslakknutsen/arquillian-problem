@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>de.reschif.arquillian-problem</groupId>
+    <artifactId>arquillian-problem-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../parent</relativePath>
+  </parent>
+  
+  <artifactId>arquillian-problem-component1</artifactId>
+  
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>component1.ejb</module>
+    <!-- <module>runtime.jee.war</module> -->
+    <module>component1.ear</module>
+  </modules>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+  
+    <pluginManagement>
+      <plugins>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+    </plugins>
+
+  </build>
+
+</project>

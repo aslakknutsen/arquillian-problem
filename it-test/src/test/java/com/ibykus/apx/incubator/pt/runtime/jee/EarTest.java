@@ -7,7 +7,9 @@ import javax.ejb.EJB;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.EnterpriseArchive;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.shrinkwrap.resolver.api.DependencyResolvers;
 import org.jboss.shrinkwrap.resolver.api.maven.MavenDependencyResolver;
 import org.junit.After;
@@ -20,16 +22,16 @@ import de.reschif.arquillian.problem.api.IMyService;
 @RunWith(Arquillian.class)
 public class EarTest {
 
-  @EJB(mappedName = "java:global/test/MyServiceOne!de.reschif.arquillian.problem.api.IMyService")
+  @EJB(mappedName = "java:app/arquillian-problem-component1-ejb-0.0.1-SNAPSHOT/MyServiceOne")
   public IMyService myService;
 
   @Deployment
   public static EnterpriseArchive getUserManager() {
-    return DependencyResolvers
-        .use(MavenDependencyResolver.class)
-        .artifact(
-            "de.reschif.arquillian-problem:arquillian-problem-component1-ear:ear:0.0.1-SNAPSHOT")
-        .resolveAs(EnterpriseArchive.class).iterator().next();
+    return DependencyResolvers.use(MavenDependencyResolver.class)
+            .artifact(
+                "de.reschif.arquillian-problem:arquillian-problem-component1-ear:ear:0.0.1-SNAPSHOT")
+            .resolveAs(EnterpriseArchive.class).iterator().next()
+        .addAsLibrary(ShrinkWrap.create(JavaArchive.class).addClass(EarTest.class));
   }
 
   @Before

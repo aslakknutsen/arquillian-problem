@@ -11,7 +11,6 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -19,7 +18,6 @@ import de.reschif.arquillian.problem.api.IMyService;
 import de.reschif.arquillian.problem.component1.MyServiceOne;
 
 @RunWith(Arquillian.class)
-@Ignore
 public class JarTest {
 
   @EJB(mappedName = "java:global/test/MyServiceOne!de.reschif.arquillian.problem.api.IMyService")
@@ -41,7 +39,7 @@ public class JarTest {
   }
 
   @Test
-  public void shouldBeAbleToInjectEJB() throws Exception {
+  public void injectEJBFromJar() throws Exception {
     System.out.println("JarTest: ........................");
     assertNotNull("no Bean injected for myService", myService);
     assertTrue("Error on calling the bean", myService.doSomething());

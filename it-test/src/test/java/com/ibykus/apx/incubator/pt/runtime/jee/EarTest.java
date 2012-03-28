@@ -43,8 +43,8 @@ public class EarTest {
   }
 
   @Test
-  public void shouldBeAbleToInjectEJB() throws Exception {
-    System.out.println("JarTest: ........................");
+  public void injectEJBFromEar() throws Exception {
+    System.out.println("EarTest: ........................");
     assertNotNull("no Bean injected for myService", myService);
     assertTrue("Error on calling the bean", myService.doSomething());
   }
